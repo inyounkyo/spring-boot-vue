@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 
 @CrossOrigin( allowedHeaders = "*")
 @RestController
@@ -27,6 +29,11 @@ public class VueV3Controller {
         User u1 = userRepository.findById(id);
         Integer statusCode = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         return new ResponseEntity<>(u1, HttpStatus.valueOf(200));
+    }
+
+    @PostMapping("/api/user/posts")
+    public void setPosts(@RequestBody Map<String, String> param){
+        System.out.println(param.get("body"));
     }
 
 
